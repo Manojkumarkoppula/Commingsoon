@@ -1,0 +1,88 @@
+
+
+<html>
+    <head>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #f4f4f4; /* Light gray background for the page */
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#countdown {
+    font-size: 36px; /* Larger font size for the countdown */
+    font-weight: bold;
+    color: #f44336; /* Red color for countdown */
+    background-color: #fff; /* White background for the countdown box */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 2px solid #ccc; /* Light gray border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#countdown {
+    font-size: 36px;
+    color: #f44336;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+    #countdown {
+        font-size: 24px;
+        padding: 10px;
+    }
+}
+
+        </style>
+    </head>
+    <body>
+        <h1>Comming Soon</h1>
+        <div id="countdown"></div>
+        <script>
+            function updatetime()
+            {
+                
+                const currentday=new Date();
+
+                const endday = new Date();
+                endday.setDate(currentday.getDate() + 2);  
+                endday.setHours(0, 0, 0, 0); 
+                //const endday=new Date("2024-12-16");
+
+                const timediff=endday-currentday;
+                
+                if(timediff<=0)
+                {
+                    document.getElementById("countdown").textContent="we are live!";
+                    return;
+                }
+                
+                const days=Math.floor(timediff/(1000*60*60*24));
+                const hours = Math.floor((timediff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins=Math.floor((timediff%(1000*60*60))/(1000*60));
+                const sec=Math.floor((timediff%(1000*60))/1000);
+                
+                document.getElementById('countdown').textContent=`${days}d ${hours}h ${mins}m ${sec}s`;
+            }
+            setInterval(updatetime,1000);
+        </script>
+    </body>
+</html>
